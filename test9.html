@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script type="text/javascript" src="angular.new.js"></script>
+</head>
+<body>
+	<div ng-controller="ctrl">
+		<input type="text" name="" value="" ng-model="key" ng-keyup="search()">
+		<ul>
+			<li ng-repeat="x in data">{{x}}</li>
+		</ul>
+	</div>
+</body>
+<script>
+	var mod=angular.module('app',[]);
+	var timer=null;
+	mod.controller('ctrl', ['$scope','$http','$timeout',function($scope,$http,$timeout){
+		$scope.search=function(){
+		$timeout.cancel(timer);
+		timer=$timeout(function(){
+			$http({
+				url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+$scope.key+'&cb=JSON_CALLBACK',
+				method:'jsonp',
+			}).success(function(data){
+				$scope.data=data.s;
+				console.log(data)
+			})
+		},1000)
+			
+		}
+	}])
+</script>
+</html>

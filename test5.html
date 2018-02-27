@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script type="text/javascript" src="angular.new.js"></script>
+</head>
+<body>
+	<div ng-controller="ctrl"></div>
+</body>
+<script>
+	var mod=angular.module('app',[]);
+	mod.controller('ctrl', ['$scope','$cacheFactory',function($scope,$cacheFactory){
+		var cache=$cacheFactory('mycache',{capacity:3});//配置
+		cache.put('name','小明');//设置
+		cache.put('name1','小红');
+		cache.put('name2','小花');
+		cache.remove('name1');//移除
+		console.log(cache.info());//查看
+		console.log(cache.get('name2'));//获取
+	}])
+</script>
+</html>

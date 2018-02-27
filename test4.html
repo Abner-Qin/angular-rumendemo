@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script type="text/javascript" src="angular.new.js"></script>
+</head>
+<body>
+	<div ng-controller="ctrl"></div>
+</body>
+<script>
+	var mod=angular.module('app',[]);
+	mod.controller('ctrl', ['$scope','$q','$timeout',function($scope,$q,$timeout){
+		var df=$q.defer();//配置
+		function show(){
+			$timeout(function(){
+				df.resolve()//成功
+			},2000)
+			return df.promise;//返回的对象
+		}
+		show();
+		df.promise.then(function(){//回调函数
+			alert('成功')
+		},function(){
+			alert('失败')
+		})
+	}])
+</script>
+</html>

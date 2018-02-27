@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script type="text/javascript" src="angular.new.js"></script>
+</head>
+<body>
+	<div ng-controller="ctrl">
+		<input type="text" name="" value="" ng-model="num">
+	</div>
+</body>
+<script>
+	var mod=angular.module('app',[]);
+	var timer=null;
+	mod.controller('ctrl', ['$scope','$interval', function($scope,$interval){
+		$scope.num=10;
+		timer=$interval(function(){
+			$scope.num-=1;
+			if($scope.num==0){
+				$interval.cancel(timer)
+			}
+		},1000)
+		
+	}])
+</script>
+</html>

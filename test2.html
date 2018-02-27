@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script type="text/javascript" src="angular.new.js"></script>
+</head>
+<body>
+	<div ng-controller="ctrl"></div>
+</body>
+<script>
+	var mod=angular.module('app',[])
+	mod.controller('ctrl', ['$scope','$location',function($scope,$location){
+		var a=$location.absUrl();//当前绝对路径
+		console.log(a)
+
+		var b=$location.host();
+		console.log(b)
+
+		var c=$location.port();//当前路径的端口
+		console.log(c)
+
+		var d=$location.protocol();//当前路径的协议
+		console.log(d)
+
+		//读写属性
+		$location.path('aa/ff/gg').replace();
+		$location.hash('hello');
+		$location.search('bb');
+		$location.url('asd')//一旦设置就会改变之前原有的路径;如果未设置输出的是当前的路径
+		var e=$location.path();
+		console.log(e)
+
+		var f=$location.hash();
+		console.log(f)
+
+		var g=$location.search();
+		console.log(g)
+
+		var h=$location.url();
+		console.log(h)
+	}])
+</script>
+</html>

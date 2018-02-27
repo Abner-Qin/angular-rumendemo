@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<title>标题</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script type="text/javascript" src="angular.new.js"></script>
+</head>
+<body>
+	<div ng-controller="ctrl"></div>
+</body>
+<script>
+	var mod=angular.module('app',[]);
+	mod.controller('ctrl', ['$scope','$log',function($scope,$log){
+		$log.log('哈哈哈');//输出
+		$log.warn('警告');
+		$log.error('错误');
+		$log.info('asdf');//查看
+	}])
+</script>
+</html>
